@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="apple-touch-icon" href="Bones.png" />
+  <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+  <link rel="manifest" href="manifest.json" />
+  <title>Tabata / EMOM</title>
+</head>
+
+<body>
+  <main>
+    <div class="workoutTypeToggle">
+      <input type="checkbox" name="workoutStyle" id="workoutStyle" />
+      <label for="workoutStyle">
+        <span class="emom">EMOM</span>
+        <span class="tabata">Tabata</span>
+      </label>
+    </div>
+    <form onsubmit="event.preventDefault(); validateForm();">
+      <label for="duration">Duration <span>(leave empty for unlimited time)</span></label>
+      <input type="number" id="duration" placeholder="Enter duration (min)" step="0.1" />
+      <fieldset class="show" id="emomFieldset">
+        <label for="cycles">Set Interval *</label>
+        <input type="number" id="cycles" placeholder="Seconds" />
+      </fieldset>
+      <fieldset id="tabataFieldset">
+        <div>
+          <label for="active">Active *</label>
+          <input type="number" id="active" placeholder="Seconds" />
+        </div>
+        <div>
+          <label for="rest">Rest *</label>
+          <input type="number" id="rest" placeholder="Seconds" />
+        </div>
+      </fieldset>
+      <p id="error">Positive numbers only please and be sure to fill out required fields :)</p>
+      <input type="submit" value="Start workout" id="submit" />
+      <button type="reset" id="reset">Cancel gains and start over</button>
+    </form>
+    <div class="displayContainer">
+      <div class="durationContainer">
+        <h2>Total time</h2>
+        <h1 class="displayTimeLeft">10:00</h1>
+      </div>
+      <div class="activeContainer">
+        <h2>Active</h2>
+        <h1 class="displayIntervalTime">9:00</h1>
+      </div>
+      <div class="restContainer">
+        <h2>Rest</h2>
+        <h1 class="displayRestTime off"></h1>
+      </div>
+    </div>
+  </main>
+  <script src="scripts.js"></script>
+</body>
+
+</html>

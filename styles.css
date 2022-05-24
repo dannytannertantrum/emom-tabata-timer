@@ -1,0 +1,206 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  max-width: 800px;
+  margin: 0 auto;
+  background: black;
+  color: #eee;
+  font-size: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  margin: 30px 20px;
+}
+
+h1, h2 {
+  margin: 0;
+  padding: 0;
+}
+
+#workoutStyle {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  opacity: 0;
+}
+
+.workoutTypeToggle {
+  margin-bottom: 40px;
+}
+
+.workoutTypeToggle label {
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 24px;
+  padding: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+.workoutTypeToggle label::before {
+  background: #FF00FF;
+  content: '';
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  border-radius: 24px;
+  top: 0;
+}
+
+#workoutStyle[type=checkbox] + label::before {
+  left: 0;
+  transition: left .25s ease-in-out;
+}
+
+#workoutStyle[type=checkbox]:checked + label::before {
+  left: 50%;
+  transition: left .25s ease-in-out;
+}
+
+#workoutStyle[type=checkbox]:checked + label .tabata,
+#workoutStyle[type=checkbox] + label .emom {
+  color: white;
+  transition: color .25s ease-in-out;
+}
+
+#workoutStyle[type=checkbox]:checked + label .emom,
+#workoutStyle[type=checkbox] + label .tabata {
+  color: black;
+}
+
+.workoutTypeToggle span {
+  border-radius: 24px;
+  padding: 4px 8px;
+  z-index: 1;
+  position: relative;
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+fieldset {
+  border: 0 none;
+  padding: 0;
+  margin: 0;
+  display: none;
+}
+
+form label span {
+  font-size: 14px;
+  color: #7d7d7d;
+}
+
+::-webkit-input-placeholder {
+  color: #7d7d7d;
+}
+::-moz-placeholder {
+  color: #7d7d7d;
+}
+
+form input[type="number"] {
+  padding: 8px;
+  border: 1px solid #c93fff;
+  background: #123;
+  color: white;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px #123 inset !important;
+    -webkit-text-fill-color: white;
+}
+
+#submit, #reset {
+  padding: 8px;
+  border: 1px solid #c93fff;
+  background-color: #123;
+  color: white;
+  cursor: pointer;
+  transition: background-color .5s ease-out;
+  font-size: 18px;
+  margin: 10px 0 30px;
+}
+
+#submit:hover, #reset:hover {
+  background-color: #FF00FF;
+  transition: background-color .5s ease;
+}
+
+#tabataFieldset div {
+  display: inline-block;
+}
+
+#tabataFieldset div:first-child {
+  margin-right: 20px;
+}
+
+#tabataFieldset input {
+  width: 120px;
+}
+
+.displayContainer,
+.durationContainer,
+.restContainer,
+#error,
+#reset {
+  display: none;
+}
+
+#error {
+  color: #d9ff00;
+}
+
+.show,
+#error.show,
+#reset.show {
+  display: block !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+.displayContainer.showDisplay {
+  display: flex;
+  align-items: center;
+}
+
+.displayContainer div:not(:last-child) {
+  margin-right: 50px;
+}
+
+.displayTimeLeft,
+.displayRestTime,
+.displayIntervalTime {
+  font-size: 40px;
+}
+
+.displayIntervalTime.off,
+.displayRestTime.off {
+  color: #ff00ff;
+}
+
+.displayTimeLeft,
+.displayIntervalTime,
+.displayRestTime {
+  color: #00ff00;
+}
